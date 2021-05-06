@@ -1,21 +1,63 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
+//icons
+import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+//screens
+import FunctionalComponent from "./Screens/FunctionalComponent";
+import ClassComponent from "./Screens/ClassComponent";
+import Home from './Screens/Home';
+
+//stack navigators
+import HomeStack from './Navigators/HomeStack'
+
+const Tab = createMaterialBottomTabNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Home"
+        shifting={true}
+        barStyle={{backgroundColor: 'black'}}
+      >
+        <Tab.Screen 
+          name="Functional" 
+          component={FunctionalComponent} 
+          options={{
+            tabBarLabel: "Functional",
+            tabBarIcon: () => (
+              <MaterialIcons name="looks-6" size={24} color="#719C70" />
+            ),
+          }}    
+        />
+        <Tab.Screen 
+          name="Home" 
+          component={HomeStack} 
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: () => (
+              <MaterialIcons name="home" size={24} color="#719C70" />
+            ),
+          }}  
+        />
+        <Tab.Screen 
+          name="Class" 
+          component={ClassComponent} 
+          options={{
+            tabBarLabel: "Class",
+            tabBarIcon: () => (
+            <MaterialCommunityIcons name="react" size={24} color="#719C70" />
+            ),
+          }} 
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

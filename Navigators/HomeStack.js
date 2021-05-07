@@ -32,6 +32,7 @@ const HomeStack = () => {
       />
       <Stack.Screen 
         name="Gallery" 
+        //screen that contains the stack
         component={Gallery} 
         options= {{
             title: 'Gallery',

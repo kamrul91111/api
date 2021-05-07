@@ -1,24 +1,23 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import PagerView from 'react-native-pager-view';
+
+//import GalleryStack
+import GalleryStack from '../Navigators/GalleryStack'
+
 
 const Gallery = () => {
     return (
-        <PagerView style={styles.pagerView} initialPage={0}>
-          <View key="1" style={{backgroundColor: 'black'}}>
-            <Text style={{fontSize: 25, color: 'white', textAlign: 'center'}}>First page</Text>
-          </View>
-          <View key="2" style={{backgroundColor: 'black'}} >
-            <Text style={{fontSize: 25, color: 'white', textAlign: 'center'}}>Second page</Text>
-          </View>
-        </PagerView>
+      //passed the gallery stack
+        <GalleryStack />
       );
 }
 
 const styles = StyleSheet.create({
-    pagerView: {
-      flex: 1,
-    },
+  container: {
+    padding: 20,
+    backgroundColor: 'black'
+  },      
 });
 
 export default Gallery
